@@ -142,20 +142,7 @@ int main(void)
   while (1)
   {
 	  if(timer_flag){
-		  setTimer(5000);
-		  clearNumberOnClock(sec++);
-		  if(sec>=12) {
-			  sec = 0;
-			  clearNumberOnClock(min++);
-			  if(min>=12) {
-				  min = 0;
-				  clearNumberOnClock(hour++);
-				  if(hour>=12) hour = 0;
-			  }
-		  }
-		  setNumberOnClock(sec);
-		  setNumberOnClock(min);
-		  setNumberOnClock(hour);
+		  setTimer(1000);
 	  }
 	  timerRun();
 	  HAL_Delay(10);
