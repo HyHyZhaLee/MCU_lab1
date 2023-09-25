@@ -136,14 +136,14 @@ int main(void)
   }
 #include "software_timer.h"
 #include <math.h>
-  setTimer(50);
+  setTimer(1000);
   int sec = 0, min = 0, hour = 0;
   clearAllClock();
   setNumberOnClock(0);
   while (1)
   {
 	  if(timer_flag){
-		  setTimer(50);
+		  setTimer(1000);
 		  clearNumberOnClock(floor(sec++/5));
 		  if(sec>=60){
 			  sec = 0;
