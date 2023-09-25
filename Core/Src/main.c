@@ -135,27 +135,29 @@ int main(void)
 	  else if(num == 11)HAL_GPIO_WritePin(LED11_GPIO_Port, LED11_Pin, OFF_STATE);
   }
 #include "software_timer.h"
-  setTimer(5000);
+#include <math.h>
+  setTimer(50);
   int sec = 0, min = 0, hour = 0;
   clearAllClock();
   setNumberOnClock(0);
   while (1)
   {
 	  if(timer_flag){
-		  setTimer(5000);
-		  clearNumberOnClock(sec++);
-		  if(sec>=12) {
+		  setTimer(50);
+		  clearNumberOnClock(floor(sec++/5));
+		  if(sec>=60){
 			  sec = 0;
-			  clearNumberOnClock(min++);
-			  if(min>=12) {
+			  clearNumberOnClock(floor(min++/5));
+			  if(min>=60){
 				  min = 0;
 				  clearNumberOnClock(hour++);
 				  if(hour>=12) hour = 0;
 			  }
 		  }
-		  setNumberOnClock(sec);
-		  setNumberOnClock(min);
+		  setNumberOnClock(floor(sec/5));
+		  setNumberOnClock(floor(min/5));
 		  setNumberOnClock(hour);
+
 	  }
 	  timerRun();
 	  HAL_Delay(10);
